@@ -54,70 +54,62 @@
               aria-label="Close"
             ></button>
           </div>
-          <form>
-            <div class="modal-body">
-              <div class="mb-3">
-                <label for="imageurl" class="form-label">Image Url</label>
-                <input
-                  type="url"
-                  class="form-control"
-                  id="imageurl"
-                  aria-describedby="imageurl"
-                  placeholder="https://google.com"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <label for="tasktitle" class="form-label">Task Title</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="tasktitle"
-                  aria-describedby="tasktitle"
-                  placeholder="hello"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <label for="tasktype" class="form-label">Task Type</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="tasktype"
-                  aria-describedby="tasktype"
-                  placeholder="pavan"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <label for="taskdescription" class="form-label"
-                  >Task Description</label
-                >
-                <textarea
-                  class="form-control"
-                  placeholder="Hello how are you"
-                  id="taskdescription"
-                  required
-                ></textarea>
-              </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="imageurl" class="form-label">Image Url</label>
+              <input
+                type="url"
+                class="form-control"
+                id="imageurl"
+                placeholder="https://images.hello.com/hello.jpg"
+              />
             </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button
-                type="submit"
-                class="btn btn-primary"
-                onclick="handleSave.apply(this, arguements)"
-              >
-                Save
-              </button>
+            <div class="mb-3">
+              <label for="tasktitle" class="form-label">Task Title</label>
+              <input
+                type="text"
+                class="form-control"
+                id="tasktitle"
+                placeholder="API Integration"
+              />
             </div>
-          </form>
+            <div class="mb-3">
+              <label for="tasktype" class="form-label">Task Type</label>
+              <input
+                type="text"
+                class="form-control"
+                id="tasktype"
+                placeholder="development"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="taskdescription" class="form-label"
+                >Task Description</label
+              >
+              <textarea
+                rows="6"
+                class="form-control"
+                id="taskdescription"
+                placeholder="Building an amazing API!"
+              ></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="saveChanges()"
+            >
+              Save changes
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -178,7 +170,7 @@
       </section>
 
       <section>
-        <div class="row">
+        <div class="row task__container">
           <div class="col-md-6 col-lg-4">
             <div class="card">
               <div class="card-header d-flex justify-content-end gap-2">
