@@ -2,7 +2,7 @@
 const taskContainer = document.querySelector(".task__container");
 
 // Global Store
-const globalStore = [];
+let globalStore = [];
 
 const newCard = ({
   id,
@@ -16,8 +16,8 @@ const newCard = ({
     <button type="button" class="btn btn-outline-success">
       <i class="fas fa-pencil-alt"></i>
     </button>
-    <button type="button" class="btn btn-outline-danger">
-      <i class="fas fa-trash-alt"></i>
+    <button type="button" id=${id} class="btn btn-outline-danger" onclick="deleteCard.apply(this, arguments)">
+      <i class="fas fa-trash-alt" id=${id} onclick="deleteCard.apply(this, arguments)"></i>
     </button>
   </div>
   <img
@@ -56,6 +56,9 @@ const loadInitialTaskCards = () => {
   });
 };
 
+const updateLocalStorage = () =>
+  localStorage.setItem("tasky", JSON.stringify({ cards: globalStore }));
+
 const saveChanges = () => {
   const taskData = {
     id: `${Date.now()}`, // unique number for card id
@@ -72,15 +75,44 @@ const saveChanges = () => {
   globalStore.push(taskData);
 
   // add to localstorage
-  localStorage.setItem("tasky", JSON.stringify({ cards: globalStore }));
+  updateLocalStorage();
 };
 
-// Issues
+const deleteCard = (event) => {
+  // id
+  event = window.event;
+  const targetID = event.target.id;
+  const tagname = event.target.tagName; // BUTTON
 
-// The modal was not closing upon adding new card. [solved]
-// the cards were deleted after refresh  -> localstorage (5MB)
+  // search the globalStore, remove the object which matches with the id
+  globalStore = globalStore.filter((cardObject) => cardObject.id !== targetID);
+
+  updateLocalStorage();
+
+  // access DOM to remove them
+
+  if (tagname === "BUTTON") {
+    // task__container
+    return taskContainer.removeChild(
+      event.target.parentNode.parentNode.parentNode // col-lg-4
+    );
+  }
+
+  // task__container
+  return taskContainer.removeChild(
+    event.target.parentNode.parentNode.parentNode.parentNode // col-lg-4
+  );
+};
 
 // Features
-// Delete modal feature
-// Open task
-// Edit Task
+
+// Edit -> Required
+
+// HINT
+
+// Complicated yet easy -> 
+
+// 1. contenteditable
+// 2. setAttributeNode()
+
+// Open (Optional)
