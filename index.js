@@ -39,7 +39,7 @@ const newCard = ({
 
 const saveChanges = () => {
   const taskData = {
-    id: `${Date.now()}`, // unique number for card id 
+    id: `${Date.now()}`, // unique number for card id
     imageUrl: document.getElementById("imageurl").value,
     taskTitle: document.getElementById("tasktitle").value,
     taskType: document.getElementById("tasktype").value,
@@ -50,3 +50,13 @@ const saveChanges = () => {
 
   taskContainer.insertAdjacentHTML("beforeend", createNewCard);
 };
+
+// Issues
+
+// The modal was not closing upon adding new card.
+// the cards were deleted after refresh
+
+// Features
+// Delete modal feature
+// Open task
+// Edit Task
